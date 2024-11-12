@@ -43,7 +43,7 @@
         </ul> -->
       </div>
       <div
-        class="h-max w-full pb-[4rem] flex justify-center text-white font-popins"
+        class="h-max w-full pb-[12rem] flex justify-center text-white font-popins"
       >
         <span>UNDER DEVELOPMENT &nbsp;|&nbsp; CALICO DESIGNS</span>
       </div>
