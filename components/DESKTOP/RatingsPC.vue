@@ -37,21 +37,6 @@
           <span class="font-popins text-[1.3rem]">95% star score</span>
         </div>
       </a>
-      <a
-        target="_blank"
-        href="https://maps.app.goo.gl/G6MdfkYCnWwS5hHfA"
-        class="h-max w-max flex flex-col items-center justify-center gap-[.4rem]"
-      >
-        <NuxtImg class="w-[6rem]" src="./icons/gmaps.svg" />
-
-        <div class="h-max w-max flex text-[gold] text-[2rem]">
-          <Icon icon="material-symbols:star-rounded" />
-          <Icon icon="material-symbols:star-rounded" />
-          <Icon icon="material-symbols:star-rounded" />
-          <Icon icon="material-symbols:star-rounded" />
-          <Icon icon="material-symbols:star-rounded" />
-        </div>
-      </a>
     </div>
   </div>
 </template>
