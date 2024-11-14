@@ -159,7 +159,7 @@ const submitForm = async () => {
     if (response.ok) {
       message.value = "Form submitted successfully!";
       messageClass.value = "text-green-500"; // Green for success
-      isCalendlyActive.value = true;
+      router.push("/booking");
       document.body.style.overflow = "hidden";
     } else {
       message.value = "An error occurred while submitting the form.";

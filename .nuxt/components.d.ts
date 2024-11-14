@@ -2,13 +2,16 @@
 import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
-      'DESKTOPFooterPC': typeof import("../components/DESKTOP/FooterPC.vue")['default']
+      'DESKTOPBookingHeroPC': typeof import("../components/DESKTOP/BookingHeroPC.vue")['default']
+    'DESKTOPBookingNavBarPC': typeof import("../components/DESKTOP/BookingNavBarPC.vue")['default']
+    'DESKTOPFooterPC': typeof import("../components/DESKTOP/FooterPC.vue")['default']
     'DESKTOPHeroFormPC': typeof import("../components/DESKTOP/HeroFormPC.vue")['default']
     'DESKTOPHeroPC': typeof import("../components/DESKTOP/HeroPC.vue")['default']
     'DESKTOPNavBarPC': typeof import("../components/DESKTOP/NavBarPC.vue")['default']
     'DESKTOPRatingsPC': typeof import("../components/DESKTOP/RatingsPC.vue")['default']
     'DESKTOPSubNavBarPC': typeof import("../components/DESKTOP/SubNavBarPC.vue")['default']
     'DESKTOPTestimonialsPC': typeof import("../components/DESKTOP/TestimonialsPC.vue")['default']
+    'MOBILEBookingHeroMOB': typeof import("../components/MOBILE/BookingHeroMOB.vue")['default']
     'MOBILEFooterMOB': typeof import("../components/MOBILE/FooterMOB.vue")['default']
     'MOBILEHeroFormMOB': typeof import("../components/MOBILE/HeroFormMOB.vue")['default']
     'MOBILEHeroMOB': typeof import("../components/MOBILE/HeroMOB.vue")['default']
@@ -41,13 +44,16 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
-      'LazyDESKTOPFooterPC': typeof import("../components/DESKTOP/FooterPC.vue")['default']
+      'LazyDESKTOPBookingHeroPC': typeof import("../components/DESKTOP/BookingHeroPC.vue")['default']
+    'LazyDESKTOPBookingNavBarPC': typeof import("../components/DESKTOP/BookingNavBarPC.vue")['default']
+    'LazyDESKTOPFooterPC': typeof import("../components/DESKTOP/FooterPC.vue")['default']
     'LazyDESKTOPHeroFormPC': typeof import("../components/DESKTOP/HeroFormPC.vue")['default']
     'LazyDESKTOPHeroPC': typeof import("../components/DESKTOP/HeroPC.vue")['default']
     'LazyDESKTOPNavBarPC': typeof import("../components/DESKTOP/NavBarPC.vue")['default']
     'LazyDESKTOPRatingsPC': typeof import("../components/DESKTOP/RatingsPC.vue")['default']
     'LazyDESKTOPSubNavBarPC': typeof import("../components/DESKTOP/SubNavBarPC.vue")['default']
     'LazyDESKTOPTestimonialsPC': typeof import("../components/DESKTOP/TestimonialsPC.vue")['default']
+    'LazyMOBILEBookingHeroMOB': typeof import("../components/MOBILE/BookingHeroMOB.vue")['default']
     'LazyMOBILEFooterMOB': typeof import("../components/MOBILE/FooterMOB.vue")['default']
     'LazyMOBILEHeroFormMOB': typeof import("../components/MOBILE/HeroFormMOB.vue")['default']
     'LazyMOBILEHeroMOB': typeof import("../components/MOBILE/HeroMOB.vue")['default']
@@ -86,6 +92,8 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const DESKTOPBookingHeroPC: typeof import("../components/DESKTOP/BookingHeroPC.vue")['default']
+export const DESKTOPBookingNavBarPC: typeof import("../components/DESKTOP/BookingNavBarPC.vue")['default']
 export const DESKTOPFooterPC: typeof import("../components/DESKTOP/FooterPC.vue")['default']
 export const DESKTOPHeroFormPC: typeof import("../components/DESKTOP/HeroFormPC.vue")['default']
 export const DESKTOPHeroPC: typeof import("../components/DESKTOP/HeroPC.vue")['default']
@@ -93,6 +101,7 @@ export const DESKTOPNavBarPC: typeof import("../components/DESKTOP/NavBarPC.vue"
 export const DESKTOPRatingsPC: typeof import("../components/DESKTOP/RatingsPC.vue")['default']
 export const DESKTOPSubNavBarPC: typeof import("../components/DESKTOP/SubNavBarPC.vue")['default']
 export const DESKTOPTestimonialsPC: typeof import("../components/DESKTOP/TestimonialsPC.vue")['default']
+export const MOBILEBookingHeroMOB: typeof import("../components/MOBILE/BookingHeroMOB.vue")['default']
 export const MOBILEFooterMOB: typeof import("../components/MOBILE/FooterMOB.vue")['default']
 export const MOBILEHeroFormMOB: typeof import("../components/MOBILE/HeroFormMOB.vue")['default']
 export const MOBILEHeroMOB: typeof import("../components/MOBILE/HeroMOB.vue")['default']
@@ -125,6 +134,8 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+export const LazyDESKTOPBookingHeroPC: typeof import("../components/DESKTOP/BookingHeroPC.vue")['default']
+export const LazyDESKTOPBookingNavBarPC: typeof import("../components/DESKTOP/BookingNavBarPC.vue")['default']
 export const LazyDESKTOPFooterPC: typeof import("../components/DESKTOP/FooterPC.vue")['default']
 export const LazyDESKTOPHeroFormPC: typeof import("../components/DESKTOP/HeroFormPC.vue")['default']
 export const LazyDESKTOPHeroPC: typeof import("../components/DESKTOP/HeroPC.vue")['default']
@@ -132,6 +143,7 @@ export const LazyDESKTOPNavBarPC: typeof import("../components/DESKTOP/NavBarPC.
 export const LazyDESKTOPRatingsPC: typeof import("../components/DESKTOP/RatingsPC.vue")['default']
 export const LazyDESKTOPSubNavBarPC: typeof import("../components/DESKTOP/SubNavBarPC.vue")['default']
 export const LazyDESKTOPTestimonialsPC: typeof import("../components/DESKTOP/TestimonialsPC.vue")['default']
+export const LazyMOBILEBookingHeroMOB: typeof import("../components/MOBILE/BookingHeroMOB.vue")['default']
 export const LazyMOBILEFooterMOB: typeof import("../components/MOBILE/FooterMOB.vue")['default']
 export const LazyMOBILEHeroFormMOB: typeof import("../components/MOBILE/HeroFormMOB.vue")['default']
 export const LazyMOBILEHeroMOB: typeof import("../components/MOBILE/HeroMOB.vue")['default']

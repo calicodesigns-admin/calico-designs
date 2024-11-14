@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file:///Users/rizwin/Desktop/calico-designs/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getQuery as getQuery$1, readBody, getCookie, setCookie, getResponseStatusText } from 'file:///Users/rizwin/Desktop/calico-designs/node_modules/h3/dist/index.mjs';
 import { createClient } from 'file:///Users/rizwin/Desktop/calico-designs/node_modules/@supabase/supabase-js/dist/main/index.js';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/rizwin/Desktop/calico-designs/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///Users/rizwin/Desktop/calico-designs/node_modules/devalue/index.js';
@@ -900,10 +900,12 @@ const _i1SNLq = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_mQptPH = () => Promise.resolve().then(function () { return confirmBooking$1; });
 const _lazy_bv0Kcg = () => Promise.resolve().then(function () { return submitForm$1; });
 const _lazy_3s9zuv = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '/api/confirm-booking', handler: _lazy_mQptPH, lazy: true, middleware: false, method: undefined },
   { route: '/api/submit-form', handler: _lazy_bv0Kcg, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_3s9zuv, lazy: true, middleware: false, method: undefined },
   { route: '/_ipx/**', handler: _i1SNLq, lazy: false, middleware: false, method: undefined },
@@ -1103,6 +1105,33 @@ const errorDev = /*#__PURE__*/Object.freeze({
   template: template$1
 });
 
+const confirmBooking = defineEventHandler(async (event) => {
+  const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SERVICE_KEY
+  );
+  const id = getCookie(event, "submission_id");
+  if (!id) {
+    throw createError({
+      statusCode: 400,
+      message: "No submission ID found in cookies."
+    });
+  }
+  const { data, error } = await supabase.from("lead_submissions").update({ isBookingConfirmed: true }).eq("id", id).single();
+  if (error) {
+    throw createError({
+      statusCode: 500,
+      message: `CHECK::Error updating booking confirmation: ${error.message}`
+    });
+  }
+  return { success: true, message: "Booking confirmed successfully." };
+});
+
+const confirmBooking$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: confirmBooking
+});
+
 const submitForm = defineEventHandler(async (event) => {
   const { name, phone, project_details } = await readBody(event);
   console.log("DETAILS:", name);
@@ -1117,6 +1146,14 @@ const submitForm = defineEventHandler(async (event) => {
       message: `Error inserting details: ${error.message}`
     });
   }
+  setCookie(event, "submission_id", data.id, {
+    httpOnly: true,
+    secure: false,
+    maxAge: 60 * 60 * 24,
+    // Cookie expires in 1 day
+    path: "/"
+    // Available across the entire site
+  });
   console.log(data.id);
   return { id: data.id };
 });
