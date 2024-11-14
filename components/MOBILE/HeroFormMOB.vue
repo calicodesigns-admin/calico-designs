@@ -92,21 +92,6 @@
 
       <!-- #2 -->
     </div>
-    <div
-      v-if="isCalendlyActive"
-      class="h-screen min-w-[100vw] overflow-x-hidden fixed top-0 left-0 flex items-center justify-center bg-black bg-opacity-[.6] backdrop-blur-[8px] z-[999]"
-    >
-      <button
-        @click="closeCalendly"
-        class="fixed top-[4vh] right-[5vw] text-white"
-      >
-        CLOSE
-      </button>
-      <CalendlyInlineWidget
-        v-bind="options"
-        class="w-[100vw] h-[40vh] overflow-x-hidden"
-      />
-    </div>
   </section>
 </template>
 
@@ -121,16 +106,6 @@ const isCalendlyActive = ref(false);
 const isSubmitting = ref(false);
 const message = ref("");
 const messageClass = ref("text-green-500");
-
-const options = {
-  url: "https://calendly.com/calicodesignsweb/30min",
-};
-
-function closeCalendly() {
-  isCalendlyActive.value = false;
-  document.body.style.overflow = "";
-  document.body.style.overflowX = "hidden";
-}
 
 const submitForm = async () => {
   isSubmitting.value = true;

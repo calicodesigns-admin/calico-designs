@@ -21,6 +21,7 @@
 import BookingHeroPC from "~/components/DESKTOP/BookingHeroPC.vue";
 import BookingNavBarPC from "~/components/DESKTOP/BookingNavBarPC.vue";
 import NavBarPC from "~/components/DESKTOP/NavBarPC.vue";
+import BookingHeroMOB from "~/components/MOBILE/BookingHeroMOB.vue";
 import NavBarMOB from "~/components/MOBILE/NavBarMOB.vue";
 </script>
 
